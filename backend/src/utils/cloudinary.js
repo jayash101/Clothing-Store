@@ -5,11 +5,11 @@ import multer from "multer"
 // Configuration
 cloudinary.config({
   // process.env.CLOUDINARY_NAME
-  cloud_name: "dnc7zafyl",
+  cloud_name: `${process.env.CLOUDINARY_NAME}`,
   // process.env.CLOUDINARY_API_KEY
-  api_key: "596745667871512",
+  api_key: `${process.env.CLOUDINARY_API_KEY}}`,
   // process.env.CLOUDINARY_API_SECRET
-  api_secret: "83M0742rZkmxFQ36BlgWebi2cjo",
+  api_secret: `${process.env.CLOUDINARY_API_SECRET}`,
 });
 
 const storage = new multer.memoryStorage();

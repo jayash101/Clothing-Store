@@ -24,13 +24,13 @@ app.use(
 
 app.use(
   express.json({
-    limit: "100kb",
+    limit: "1024kb",
   })
 );
 
 app.use(
   express.urlencoded({
-    limit: "100kb",
+    limit: "1024kb",
   })
 );
 

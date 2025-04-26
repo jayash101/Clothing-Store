@@ -1,13 +1,13 @@
 import { v2 as cloudinary } from "cloudinary";
 import fs from "fs";
-import multer from "multer"
+import multer from "multer";
 
 // Configuration
 cloudinary.config({
   // process.env.CLOUDINARY_NAME
   cloud_name: `${process.env.CLOUDINARY_NAME}`,
   // process.env.CLOUDINARY_API_KEY
-  api_key: `${process.env.CLOUDINARY_API_KEY}}`,
+  api_key: `${process.env.CLOUDINARY_API_KEY}`,
   // process.env.CLOUDINARY_API_SECRET
   api_secret: `${process.env.CLOUDINARY_API_SECRET}`,
 });

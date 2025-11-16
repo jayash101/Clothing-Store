@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { VITE_API_URL } from "@/lib/url";
 
 const initialState = {
   isLoading: false,
@@ -11,7 +12,7 @@ export const addNewAddress = createAsyncThunk(
   "/address/addNewAddress",
   async (formData) => {
     const result = await axios.post(
-      "http://localhost:4000/api/shop/address/add",
+      `${VITE_API_URL}/api/shop/address/add`,
       formData,
     );
 
@@ -23,7 +24,7 @@ export const fetchAllAddress = createAsyncThunk(
   "/address/fetchAllAddress",
   async (userId) => {
     const result = await axios.get(
-      `http://localhost:4000/api/shop/address/get/${userId}`,
+      `${VITE_API_URL}/api/shop/address/get/${userId}`,
     );
 
     return result.data;
@@ -34,7 +35,7 @@ export const updateAddress = createAsyncThunk(
   "/address/updateAddress",
   async ({ userId, addressId, formData }) => {
     const result = await axios.put(
-      `http://localhost:4000/api/shop/address/update/${userId}/${addressId}`,
+      `${VITE_API_URL}/api/shop/address/update/${userId}/${addressId}`,
       formData,
     );
 
@@ -46,7 +47,7 @@ export const deleteAddress = createAsyncThunk(
   "/address/deleteAddress",
   async ({ userId, addressId }) => {
     const result = await axios.delete(
-      `http://localhost:4000/api/shop/address/delete/${userId}/${addressId}`,
+      `${VITE_API_URL}/api/shop/address/delete/${userId}/${addressId}`,
     );
 
     return result.data;
@@ -80,7 +81,7 @@ const ShoppingAddressSlice = createSlice({
       .addCase(fetchAllAddress.rejected, (state) => {
         state.isLoading = false;
         state.addressList = [];
-      })
+      });
   },
 });
 

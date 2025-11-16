@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { VITE_API_URL } from "@/lib/url";
 
 const initialState = {
   isLoading: false,
@@ -10,7 +11,7 @@ export const addProductReview = createAsyncThunk(
   "cart/addProductReview",
   async (formData) => {
     const result = await axios.post(
-      "http://localhost:4000/api/shop/review/add",
+      `${VITE_API_URL}/api/shop/review/add`,
       formData,
     );
 
@@ -22,8 +23,10 @@ export const addProductReview = createAsyncThunk(
 export const getProductReviews = createAsyncThunk(
   "cart/getProductReviews",
   async (productId) => {
+    console.log(VITE_API_URL, "vite");
+
     const result = await axios.get(
-      `http://localhost:4000/api/shop/review/${productId}`,
+      `${VITE_API_URL}/api/shop/review/${productId}`,
     );
 
     return result.data;

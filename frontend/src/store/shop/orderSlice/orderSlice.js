@@ -1,3 +1,4 @@
+import { VITE_API_URL } from "@/lib/url";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -13,7 +14,7 @@ export const createNewOrder = createAsyncThunk(
   "/order/createNewOrder",
   async (orderData) => {
     const result = await axios.post(
-      "http://localhost:4000/api/shop/order/create",
+      `${VITE_API_URL}/api/shop/order/create`,
       orderData,
     );
 
@@ -24,10 +25,11 @@ export const createNewOrder = createAsyncThunk(
 export const capturePayment = createAsyncThunk(
   "/order/capturePayment",
   async ({ paymentId, payerId, orderId }) => {
-    const result = await axios.post(
-      "http://localhost:4000/api/shop/order/capture",
-      { paymentId, payerId, orderId },
-    );
+    const result = await axios.post(`${VITE_API_URL}/api/shop/order/capture`, {
+      paymentId,
+      payerId,
+      orderId,
+    });
 
     return result.data;
   },
@@ -37,7 +39,7 @@ export const getUserOrders = createAsyncThunk(
   "/order/getUserOrders",
   async (userId) => {
     const result = await axios.get(
-      `http://localhost:4000/api/shop/order/list/${userId}`,
+      `${VITE_API_URL}/api/shop/order/list/${userId}`,
     );
 
     return result.data;
@@ -48,7 +50,7 @@ export const getOrderDetails = createAsyncThunk(
   "/order/getOrderDetails",
   async (id) => {
     const result = await axios.get(
-      `http://localhost:4000/api/shop/order/details/${id}`,
+      `${VITE_API_URL}/api/shop/order/details/${id}`,
     );
 
     return result.data;

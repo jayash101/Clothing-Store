@@ -1,3 +1,4 @@
+import { VITE_API_URL } from "@/lib/url";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -9,9 +10,7 @@ const initialState = {
 export const getFeaturedImage = createAsyncThunk(
   "/common/getFeaturedImage",
   async () => {
-    const result = await axios.get(
-      "http://localhost:4000/api/common/feature/get",
-    );
+    const result = await axios.get(`${VITE_API_URL}/api/common/feature/get`);
 
     return result.data;
   },
@@ -20,15 +19,13 @@ export const getFeaturedImage = createAsyncThunk(
 export const addFeaturedImage = createAsyncThunk(
   "/common/addFeaturedImage",
   async (image) => {
-    const result = await axios.post(
-      "http://localhost:4000/api/common/feature/add",
-      { image },
-    );
+    const result = await axios.post(`${VITE_API_URL}/api/common/feature/add`, {
+      image,
+    });
 
     return result.data;
   },
 );
-
 
 const commonSlice = createSlice({
   name: "commonFeature",
